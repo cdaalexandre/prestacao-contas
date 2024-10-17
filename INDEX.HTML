@@ -5889,6 +5889,52 @@ entre as marcas DIV serão substituídas.-->
 <!----------------------------->
 <!--FIM DA SAÍDA DO 'ASSISTENTE PARA PUBLICAÇÃO COMO PÁGINA DA WEB' DO EXCEL-->
 <!----------------------------->
+
+
+
+
+
+
+    <script>
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+
+        async function checkPassword() {
+            const password = prompt("Por favor, insira a senha para acessar as contas do processo 1005916-31.2024.8.26.0010:");
+            if (!password) {
+                alert("Senha incorreta.");
+                window.location.href = "https://cdaalexandre.github.io/prestacao-contas/";
+                return;
+            }
+
+            const hash = await hashPassword(password);
+
+            const senhaHash = "91c71e905611dd501ad571398a5a3ff518fd36f85ec7735397a59d8a4f8d48f5";
+
+            if (hash === senhaHash) {
+                document.querySelector('.content').style.display = 'block';
+            } else {
+                alert("Senha incorreta.");
+                window.location.href = "https://cdaalexandre.github.io/prestacao-contas/";
+            }
+        }
+
+        window.onload = checkPassword;
+    </script>
+
+
+
+
+
+
 </body>
 
 </html>
