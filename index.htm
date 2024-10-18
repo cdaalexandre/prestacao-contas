@@ -5907,6 +5907,7 @@ entre as marcas DIV serão substituídas.-->
         }
 
         async function checkPassword() {
+			document.body.style.display = 'none';
             const password = prompt("Por favor, insira a senha para acessar as contas do processo 1005916-31.2024.8.26.0010:");
             if (!password) {
                 alert("Senha incorreta.");
@@ -5919,7 +5920,7 @@ entre as marcas DIV serão substituídas.-->
             const senhaHash = "91c71e905611dd501ad571398a5a3ff518fd36f85ec7735397a59d8a4f8d48f5";
 
             if (hash === senhaHash) {
-				document.getElementById('CONTAS_INVENTARIO_2534').style.display = 'block';				
+				document.body.style.display = 'block';				
             } else {
                 alert("Senha incorreta.");
                 window.location.href = "https://cdaalexandre.github.io/prestacao-contas/";
