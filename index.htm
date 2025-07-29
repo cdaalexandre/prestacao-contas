@@ -5933,7 +5933,11 @@ entre as marcas DIV serão substituídas.-->
 
 ---------------->
 
-
+<script>
+  document.querySelectorAll('a').forEach(link => {
+    link.removeAttribute('href');
+  });
+</script>
 
 
 </body>
